@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			
+			var oreo = []
+			
+			const PIECE_WIDTH = 172 * 1
+			const PIECE_HEIGHT = 96 * 1
+			
+			function O()
+			{
+				oreo.push("O")
+				document.getElementById("name").innerHTML = oreo.join("")
+				
+				createOreo();
+			}
+			
+			function RE()
+			{
+				oreo.push("RE")
+				document.getElementById("name").innerHTML = oreo.join("")
+				
+				createOreo();
+			}
+			
+			function createOreo()
+			{
+				var y = 100;
+				
+				div =  document.getElementById("oreo")
+				
+				div.innerHTML = ""
+				
+				var piece;
+				
+				for(var i = 0; i < oreo.length; i++)
+				{
+					if(oreo[i] == "O")
+					{
+						piece = document.createElement("img");
+						piece.src = "./assets/O.png"
+					}
+					else
+					{
+						piece = document.createElement("img");
+						piece.src = "./assets/RE.png"
+					}
+					
+					piece.style.position = "absolute";
+					piece.style.top = y + "px";
+					piece.style.left = window.innerWidth / 2 - PIECE_WIDTH/2
+					piece.style.zIndex = oreo.length-i;
+					piece.style.width = PIECE_WIDTH + "px";
+					piece.style.zIndex = PIECE_HEIGHT + "px";
+					
+					div.appendChild(piece);
+					y += 10
+				}	
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div style="text-align:center">
+			<button onClick="O()">O</button>
+			<button onClick="RE()">RE</button>
+			<br />
+			<h1 id="name"></h1>
+		</div>
+		<br />
+		<div id="oreo">
+		
+		
+		</div>
+	</body>
+</html>
